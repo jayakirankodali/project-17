@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="en"><head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js"></script>
+    <script src="p5play.js"></script>
+    
+    <meta charset="utf-8">
+
+  <base href="https://editor.p5js.org/Jayakiran/present/vUujf5JB6/"><style>
+html, body {
+  margin: 0;
+  padding: 0;
+}
+canvas {
+  display: block;
+}
+</style></head>
+  <body>
+    <script>var
+monkey_running,bananaImage,obstacleImage,obstacleGroup,foodGroup,background1,score,ivisibleGround;
+
+
+function preload(){
+monkey_running=loadAnimation("https://assets.editor.p5js.org/5f06eb25ca574a002055c56d/e71780bc-7368-4b1e-900e-4a8eebbd67a7.png","https://assets.editor.p5js.org/5f06eb25ca574a002055c56d/927567c6-59e9-4322-8687-7ed19ccf3df4.png","https://assets.editor.p5js.org/5f06eb25ca574a002055c56d/02b6905b-1d37-4b73-ae10-a5a8e77e371a.png","https://assets.editor.p5js.org/5f06eb25ca574a002055c56d/b5638c04-e5b0-4203-aa9e-94236f6ec7f9.png","https://assets.editor.p5js.org/5f06eb25ca574a002055c56d/92d55dab-5bfc-40f5-8eb0-5eb29cc88553.png","https://assets.editor.p5js.org/5f06eb25ca574a002055c56d/15ca81a5-b19f-4e32-b4ac-5dcd98e90d1b.png","https://assets.editor.p5js.org/5f06eb25ca574a002055c56d/cde39d44-040d-4ea6-98b4-ec7c6a7a3dff.png","https://assets.editor.p5js.org/5f06eb25ca574a002055c56d/6a6e6bed-c57e-4a30-a55c-76f0ee470dd4.png","https://assets.editor.p5js.org/5f06eb25ca574a002055c56d/f7e4eecd-1e0f-4d00-aad8-3d95a4ed0976.png","https://assets.editor.p5js.org/5f06eb25ca574a002055c56d/7fd4e0c4-1f70-49e3-8828-db2db029ecd6.png");
+  
+  bananaImage=loadImage("https://assets.editor.p5js.org/5f06eb25ca574a002055c56d/369acf20-52b6-4a79-b0af-c9b0f21cdec8.png");
+  background1=loadImage("https://assets.editor.p5js.org/5f06eb25ca574a002055c56d/88876373-167a-4f7a-9b5b-285daa0b1450.jpg");                           
+obstacleImage=loadImage("https://assets.editor.p5js.org/5f06eb25ca574a002055c56d/46845d8e-e14e-4e3e-b6b6-aaaae2bedf9f.png");
+  
+  
+}
+
+
+
+
+
+function setup() {
+  createCanvas(600,200);
+   monkey=createSprites(50,180,20,50);
+  monkey.addAnimation("monkey_running");
+  monkey.scale=0.5;
+ background1=createSprite();
+  background1.velocityX=-2;
+  background1.x=background1.width/2;
+  obstacleImage=createSprite(600,165,10,40);
+  invisibleGround=create(200,190,400,20);
+  insisibleGround.visible=false;
+  background1=createSprite();
+  foodGroup=new group();
+  obstacleGroup=new group();
+}
+
+
+function draw() {
+  background(220);
+  stroke("white");
+  textsize(20);
+  fill("white");
+   text("Score: ", 500, 70);
+  
+  
+  
+  if (foodGroup.isTouching(monkey)){
+  Score=Score+2;
+    banana.destroyEach();
+
+}
+drawSprites();
+}
+
+function banana(){
+  if(frameCount % 80===0){
+   var banana = createSprite(600,120,40,10);
+    banana.y=random(120,200);
+   banana.addAnimation(bananaImage);
+    banana.scale=0.05;
+    banana.velocityX=-2;
+    banana.lifetime=200;
+    banana.depth=monkey.depth;
+    monkey.depth=money.depth+1;
+    foodGroup.add(banana);
+    
+  }
+  
+  
+}
+
+function Obstacle(){
+  if(frameCount % 60===0){
+     var obstacle=createSprite(600,165,10,40);
+    obsatcle.addImage(ObstacleImage);
+     obstacle.velocityX=-4;obstacle.scale=0.6;
+    obsatcle.lifetime=300;
+    obstaceGroup.add (Obstacle);
+    
+     }
+
+
+}
+function player(){
+monkey=createSprites(50,180,20,50);
+  monkey.addAnimation("monkey_running");
+  monkey.scale=0.5;
+  switch (score){
+    case 10:player.scale=0.12;
+      break;
+      
+       case 20:player.scale=0.14;
+      break;
+      
+       case 30:player.scale=0.16;
+      break;
+       case 40:player.scale=0.18;
+      break;
+      default:break;
+      
+      
+  }
+
+  if (ObstacleGroup.isTouching(monkey)){
+    monkey.scale=0.2;
+} 
+
+</script>
+  
+
+</body></html>
